@@ -6,11 +6,11 @@ Track coding sessions, monitor productivity, manage your session history, and an
 
 ## 🌐 Live Preview
 
-**[🚀 Open Live Application](https://samojahn200215.github.io/dev-session-tracker-pro/)**
+**[🚀 Open Live Application](/preview.png)**
 
 ## 🚀 Live Demo
 
-**[Open Live Demo]()**
+**[Open Live Demo](https://johnyisbackk.github.io/js-dev-session-tracker-pro/)**
 
 ## ✨ Features
 
@@ -57,7 +57,6 @@ Sessions are not synchronized between devices. Use the built-in JSON export and 
 **Samuel Jahn**
 
 - 🌐 Portfolio: [samueljahn.sk](https://samueljahn.sk)
-- 💻 GitHub: [samojahn200215](https://github.com/samojahn200215)
 
 ---
 

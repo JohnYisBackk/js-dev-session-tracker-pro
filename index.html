@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Dev Session Tracker PRO - Track your coding sessions, focus time, productivity and progress."
+    />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- LUCIDE ICONS -->
+    <script
+      src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"
+      defer
+    ></script>
+    <script src="script.js" defer></script>
+    <title>Dev Session Tracker PRO</title>
+  </head>
+  <body>
+    <!-- ====================================================== -->
+    <!-- 1. HEADER -->
+    <!-- ====================================================== -->
+
+    <header class="header">
+      <a href="#" class="logo">
+        <i data-lucide="code-xml"></i>
+
+        <div class="logo-content">
+          <h1>Dev Session Tracker <span>PRO</span></h1>
+          <p>Track your coding sessions, focus time and progress.</p>
+        </div>
+      </a>
+
+      <div class="header-stats">
+        <div class="header-stat">
+          <i data-lucide="clock-3"></i>
+
+          <div>
+            <p>Today Total</p>
+            <span id="todayTotalValue">4h 32m</span>
+          </div>
+        </div>
+
+        <div class="header-stat">
+          <i data-lucide="layers-3"></i>
+
+          <div>
+            <p>Sessions</p>
+            <span id="sessionsValue">6</span>
+          </div>
+        </div>
+
+        <div class="header-stat">
+          <i data-lucide="flame"></i>
+
+          <div>
+            <p>Current Streak</p>
+            <span id="currentStreakValue">7 days</span>
+          </div>
+        </div>
+
+        <div class="header-stat">
+          <i data-lucide="chart-no-axes-column-increasing"></i>
+
+          <div>
+            <p>Total Hours</p>
+            <span id="totalHoursValue">48h 17m</span>
+          </div>
+        </div>
+      </div>
+
+      <button
+        class="settings-btn"
+        id="settingsBtn"
+        type="button"
+        aria-label="Settings"
+      >
+        <i data-lucide="settings"></i>
+      </button>
+    </header>
+
+    <!-- ====================================================== -->
+    <!-- MAIN -->
+    <!-- ====================================================== -->
+
+    <main class="main">
+      <div class="main-content">
+        <!-- ====================================================== -->
+        <!-- 2. CURRENT SESSION -->
+        <!-- ====================================================== -->
+
+        <section class="current-session-section">
+          <div class="current-session-header">
+            <div class="current-session-title">
+              <i data-lucide="circle-dot"></i>
+
+              <div>
+                <h2>Current Session</h2>
+                <p>Track your current coding activity in real time.</p>
+              </div>
+            </div>
+
+            <div class="mode-select">
+              <i data-lucide="target"></i>
+
+              <select id="modeSelect" name="sessionMode">
+                <option value="focus" selected>Focus Mode</option>
+                <option value="learning">Learning Mode</option>
+                <option value="deep-work">Deep Work Mode</option>
+              </select>
+
+              <i data-lucide="chevron-down"></i>
+            </div>
+          </div>
+
+          <div class="input-section">
+            <div class="title-input">
+              <i data-lucide="file-text"></i>
+
+              <div>
+                <label for="titleInput">Title</label>
+                <input
+                  type="text"
+                  id="titleInput"
+                  placeholder="Type here project name..."
+                  maxlength="100"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="note-input">
+              <i data-lucide="align-left"></i>
+
+              <div>
+                <label for="noteInput">Note (optional)</label>
+                <textarea
+                  id="noteInput"
+                  placeholder="What are you working on today?"
+                  rows="3"
+                  maxlength="350"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-time-content">
+            <div class="time-display">
+              <span id="timerDisplay" role="timer">00:00:00</span>
+            </div>
+
+            <div class="timer-status" id="timerStatus">
+              <span class="status-dot"></span>
+              <span id="statusText">Idle</span>
+            </div>
+          </div>
+
+          <div class="main-content-actions">
+            <button class="start-button" id="startBtn" type="button">
+              <i data-lucide="play"></i>
+              <span>Start</span>
+            </button>
+
+            <button class="pause-button" id="pauseBtn" type="button">
+              <i data-lucide="pause"></i>
+              <span>Pause</span>
+            </button>
+
+            <button class="Stop-save-button" id="stopSaveBtn" type="button">
+              <i data-lucide="square"></i>
+              <span> Stop & Save </span>
+            </button>
+
+            <button class="reset-button" id="resetBtn" type="button">
+              <i data-lucide="rotate-ccw"></i>
+              <span>Reset</span>
+            </button>
+          </div>
+
+          <div class="main-stats">
+            <div class="main-stat">
+              <i data-lucide="clock-3"></i>
+
+              <div>
+                <p>Today Total</p>
+                <span id="sessionTodayTotalValue">4h 32m</span>
+              </div>
+            </div>
+
+            <div class="main-stat">
+              <i data-lucide="chart-no-axes-column"></i>
+
+              <div>
+                <p>Sessions Today</p>
+                <span id="sessionsTodayValue">6</span>
+              </div>
+            </div>
+
+            <div class="main-stat">
+              <i data-lucide="trending-up"></i>
+
+              <div>
+                <p>Average Session</p>
+                <span id="averageSessionValue">45m</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-column">
+          <!-- ====================================================== -->
+          <!-- 3. LEAVE PAGE WARNING -->
+          <!-- ====================================================== -->
+
+          <section class="leave-warning-section">
+            <div class="leave-warning-left">
+              <i data-lucide="shield-check"></i>
+
+              <div>
+                <h3>Leave page warning enabled</h3>
+                <p>
+                  You'll be notified before leaving if a timer is running and
+                  not saved.
+                </p>
+              </div>
+            </div>
+
+            <div class="leave-warning-right">
+              <button
+                class="preview-message-button"
+                id="previewMessageBtn"
+                type="button"
+              >
+                <i data-lucide="eye"></i>
+                <span>Preview Message</span>
+              </button>
+
+              <label class="warning-switch">
+                <input
+                  type="checkbox"
+                  id="leaveWarningToggle"
+                  aria-label="Enable leave page warning"
+                  checked
+                />
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+          </section>
+
+          <!-- ====================================================== -->
+          <!-- 4. SESSION HISTORY -->
+          <!-- ====================================================== -->
+
+          <section class="session-history-section">
+            <div class="session-history-header">
+              <div class="session-history-title">
+                <h3>Session History</h3>
+                <p>View, search and manage your coding sessions.</p>
+              </div>
+
+              <div class="session-history-actions">
+                <button class="export-button" id="exportBtn" type="button">
+                  <i data-lucide="download"></i>
+                  <span>Export JSON</span>
+                </button>
+
+                <button class="import-button" id="importBtn" type="button">
+                  <i data-lucide="upload"></i>
+                  <span>Import</span>
+                </button>
+
+                <button class="clear-all-button" id="clearAllBtn" type="button">
+                  <i data-lucide="trash-2"></i>
+                  <span>Clear All</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="session-history-filters">
+              <div class="session-history-search-input">
+                <i data-lucide="search"></i>
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Search sessions or notes..."
+                />
+              </div>
+
+              <button
+                class="all-filter-button active"
+                type="button"
+                data-filter="all"
+              >
+                All
+              </button>
+              <button
+                class="today-filter-button"
+                type="button"
+                data-filter="today"
+              >
+                Today
+              </button>
+              <button
+                class="this-week-button"
+                type="button"
+                data-filter="thisWeek"
+              >
+                This Week
+              </button>
+            </div>
+
+            <div class="session-history-grid" id="sessionHistoryGrid">
+              <!-- THIS WILL BE RENDERED IN JAVASCRIPT -->
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- ====================================================== -->
+      <!-- 5. PRODUCTIVITY STATS -->
+      <!-- ====================================================== -->
+
+      <section class="productivity-stats-section">
+        <div class="productivity-stat gold">
+          <i data-lucide="trophy"></i>
+
+          <div>
+            <p>Longest Session</p>
+            <span id="longestSessionValue" class="gold">3h 12m</span>
+            <p class="date">Oct 14, 2026</p>
+          </div>
+
+          <div class="stat-visual bars gold-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="productivity-stat purple">
+          <i data-lucide="bar-chart-3"></i>
+
+          <div>
+            <p>Weekly Total</p>
+            <span id="weeklyTotalValue" class="purple">18h 24m</span>
+            <p class="date success-text">↗ +12% from last week</p>
+          </div>
+
+          <div class="stat-visual bars purple-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="productivity-stat cyan">
+          <i data-lucide="target"></i>
+
+          <div>
+            <p>Deep Focus Score</p>
+            <span id="deepFocusValue" class="cyan">87 / 100</span>
+            <p class="date success-text">↗ +5% from last week</p>
+          </div>
+
+          <div class="stat-visual wave">
+            <svg
+              viewBox="0 0 120 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 34C14 34 16 10 28 10C40 10 42 34 54 34C66 34 68 18 80 18C92 18 94 42 106 42C114 42 117 30 118 26"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="productivity-stat green">
+          <i data-lucide="calendar-days"></i>
+
+          <div>
+            <p>Best Day</p>
+            <span id="bestDayValue" class="green">Wednesday</span>
+            <p class="date">6h 28m total</p>
+          </div>
+
+          <div class="stat-visual bars green-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
